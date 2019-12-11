@@ -18,4 +18,18 @@ class Building
     average = rents / @units.count.to_f
     average
   end
+
+  def renter_with_highest_rent
+    amount = 0
+    renter = nil
+    @units.each do |unit|
+      if unit.renter != nil
+        if unit.monthly_rent > amount
+            amount = unit.monthly_rent
+            renter = unit.renter
+          end
+        end
+      end
+    return renter
+  end
 end
